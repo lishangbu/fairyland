@@ -1,0 +1,10 @@
+spring:
+  main:
+    banner-mode: off
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/test
+mybatis-flex:
+  global-config:
+    print-banner: false

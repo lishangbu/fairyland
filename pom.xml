@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>io.github.lishangbu</groupId>
+        <artifactId>fairyland-parent</artifactId>
+        <version>${revision}</version>
+        <relativePath>fairyland-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>fairyland</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>fairyland-account</module>
+        <module>fairyland-common</module>
+        <module>fairyland-dependencies</module>
+        <module>fairyland-extensions</module>
+        <module>fairyland-parent</module>
+        <module>fairyland-standalone-server</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <url>https://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+            <id>tencent-central</id>
+        </repository>
+    </repositories>
+    <inceptionYear>2024</inceptionYear>
+</project>
