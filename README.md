@@ -10,6 +10,11 @@
 
 ## Usage
 
+- [Fairyland Doc](https://lishangbu.github.io/fairyland-doc/)
+- [Spring](https://docs.spring.io/spring-boot/index.html)
+- [ioGame](https://game.iohao.com)
+- [mybatis-flex](https://mybatis-flex.com)
+
 
 ## Maintainers
 
