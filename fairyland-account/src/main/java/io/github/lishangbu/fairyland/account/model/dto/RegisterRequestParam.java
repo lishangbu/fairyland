@@ -1,4 +1,4 @@
-package io.github.lishangbu.fairyland.account.model;
+package io.github.lishangbu.fairyland.account.model.dto;
 
 import com.baidu.bjf.remoting.protobuf.annotation.Protobuf;
 import com.baidu.bjf.remoting.protobuf.annotation.ProtobufClass;

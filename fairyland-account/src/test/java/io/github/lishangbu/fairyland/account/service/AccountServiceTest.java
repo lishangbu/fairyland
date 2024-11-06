@@ -21,8 +21,8 @@ class AccountServiceTest {
      * 数据库中已经有一个用户名为admin,密码为123456的账号
      */
     @Test
-    void login() {
-        Account account = accountService.login("admin", "123456");
+    void getAndValidateAccount() {
+        Account account = accountService.getAndValidateAccount("admin", "123456");
         Assertions.assertEquals("admin", account.getUsername());
         Assertions.assertEquals("", account.getEmail());
         Assertions.assertEquals("", account.getMobile());

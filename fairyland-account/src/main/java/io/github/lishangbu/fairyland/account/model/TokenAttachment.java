@@ -6,26 +6,19 @@ import com.iohao.game.action.skeleton.core.flow.UserAttachment;
 import lombok.Data;
 
 /**
- * 用户信息
+ * 令牌元数据
  *
  * @author lishangbu
- * @since 2024/10/30
+ * @since 2024/11/4
  */
 @Data
-@ProtobufClass(description = "令牌信息")
-public class TokenInfo implements UserAttachment {
-
+@ProtobufClass
+public class TokenAttachment implements UserAttachment {
+    @Protobuf(description = "令牌")
+    private String token;
     /**
      * 用户名
      */
     @Protobuf(description = "用户名")
     private String username;
-
-
-    /**
-     * 令牌
-     */
-    @Protobuf(description = "令牌")
-    private String token;
-
 }

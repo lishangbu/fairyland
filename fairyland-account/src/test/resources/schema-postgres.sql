@@ -2,14 +2,42 @@
 DROP TABLE  IF EXISTS "ACCOUNT";
 CREATE TABLE IF NOT EXISTS "ACCOUNT"
 (
-    ID                      bigint,
-    ENABLED                 boolean,
-    ACCOUNT_NON_EXPIRED     boolean,
-    CREDENTIALS_NON_EXPIRED boolean,
-    ACCOUNT_NON_LOCKED      boolean,
-    USERNAME                varchar(30),
-    PASSWORD                varchar(100),
-    EMAIL                   varchar(200),
-    MOBILE                  varchar(11)
+    ID                      bigint PRIMARY KEY,
+    ENABLED                 boolean NOT NULL DEFAULT true,
+    ACCOUNT_NON_EXPIRED     boolean NOT NULL DEFAULT true,
+    CREDENTIALS_NON_EXPIRED boolean NOT NULL DEFAULT true,
+    ACCOUNT_NON_LOCKED      boolean NOT NULL DEFAULT true,
+    USERNAME                varchar(30) NOT NULL,
+    PASSWORD                varchar(100) NOT NULL,
+    EMAIL                   varchar(200) NOT NULL DEFAULT '',
+    MOBILE                  varchar(11) NOT NULL DEFAULT ''
 );
 
+COMMENT ON TABLE "ACCOUNT" IS '账户信息';
+
+COMMENT ON COLUMN "ACCOUNT".ID IS '主键';
+COMMENT ON COLUMN "ACCOUNT".ENABLED IS '账号激活状态,false代表未激活,true代表已经激活';
+COMMENT ON COLUMN "ACCOUNT".ACCOUNT_NON_EXPIRED IS '账号未过期状态false代表已经过期，true代表未过期';
+COMMENT ON COLUMN "ACCOUNT".CREDENTIALS_NON_EXPIRED IS '密码未过期状态,false代表密码已经过期,true代表密码未过期';
+COMMENT ON COLUMN "ACCOUNT".ACCOUNT_NON_LOCKED IS '账户未锁定状态,false代表密码已经锁定,true代表账号未锁定';
+COMMENT ON COLUMN "ACCOUNT".USERNAME IS '用户名';
+COMMENT ON COLUMN "ACCOUNT".PASSWORD IS '密码';
+COMMENT ON COLUMN "ACCOUNT".EMAIL IS '邮箱';
+COMMENT ON COLUMN "ACCOUNT".MOBILE IS '手机号';
+
+DROP TABLE  IF EXISTS "TOKEN";
+CREATE TABLE IF NOT EXISTS "TOKEN"
+(
+    ID                      bigint PRIMARY KEY,
+    USER_ID                 bigint NOT NULL,
+    USERNAME                varchar(30) NOT NULL,
+    TOKEN_VALUE             char(36) NOT NULL
+);
+
+
+COMMENT ON TABLE "TOKEN" IS '令牌信息';
+
+COMMENT ON COLUMN "TOKEN".ID IS '主键';
+COMMENT ON COLUMN "TOKEN".USER_ID IS '用户ID';
+COMMENT ON COLUMN "TOKEN".USERNAME IS '用户名';
+COMMENT ON COLUMN "TOKEN".TOKEN_VALUE IS '令牌值';

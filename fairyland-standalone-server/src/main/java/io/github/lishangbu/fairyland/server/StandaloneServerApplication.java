@@ -8,8 +8,9 @@ import com.iohao.game.external.core.netty.DefaultExternalServerBuilder;
 import com.iohao.game.external.core.netty.handler.ws.WebSocketVerifyHandler;
 import com.iohao.game.external.core.netty.micro.WebSocketMicroBootstrapFlow;
 import com.iohao.game.external.core.netty.simple.NettyRunOne;
-import io.github.lishangbu.common.core.constant.LoginModuleFunctionConstants;
-import io.github.lishangbu.common.core.constant.ModuleConstants;
+import io.github.lishangbu.common.core.constant.route.ModuleCmdConstants;
+import io.github.lishangbu.common.core.constant.route.account.AccountTokenSubCmdConstants;
+import io.github.lishangbu.common.core.constant.route.account.AccountUserSubCmdConstants;
 import io.github.lishangbu.fairyland.account.AccountBrokerClientStartup;
 import io.github.lishangbu.fairyland.server.handler.AuthVerifyHandler;
 import io.github.lishangbu.fairyland.server.hook.DefaultSocketIdleHook;
@@ -37,7 +38,6 @@ public class StandaloneServerApplication {
         builder.setting().setIdleProcessSetting(new IdleProcessSetting()
                 // 添加心跳事件回调
                 .setIdleHook(new DefaultSocketIdleHook()));
-        // 设置 MicroBootstrapFlow 类，并重写 createVerifyHandler 方法
         builder.setting().setMicroBootstrapFlow(new WebSocketMicroBootstrapFlow() {
             @Override
             protected WebSocketVerifyHandler createVerifyHandler() {
@@ -49,8 +49,8 @@ public class StandaloneServerApplication {
         // 表示登录才能访问业务方法
         accessAuthenticationHook.setVerifyIdentity(true);
         // 添加不需要登录（身份验证）也能访问的业务方法 (action)
-        accessAuthenticationHook.addIgnoreAuthCmd(ModuleConstants.LOGIN, LoginModuleFunctionConstants.LOGIN);
-        accessAuthenticationHook.addIgnoreAuthCmd(ModuleConstants.LOGIN, LoginModuleFunctionConstants.REGISTER);
+        accessAuthenticationHook.addIgnoreAuthCmd(ModuleCmdConstants.Account.TOKEN, AccountTokenSubCmdConstants.LOGIN);
+        accessAuthenticationHook.addIgnoreAuthCmd(ModuleCmdConstants.Account.USER, AccountUserSubCmdConstants.REGISTER);
 
         new NettyRunOne()
                 .setExternalServer(builder.build())

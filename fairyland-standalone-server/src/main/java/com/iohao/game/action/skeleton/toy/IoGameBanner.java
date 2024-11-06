@@ -43,7 +43,7 @@ import static java.lang.System.out;
  * ioGame Banner ， 不提供关闭 Banner 的方法，让开发者含泪看完 Banner
  *
  * @author 渔民小镇
- * @date 2023-01-30
+ * @since 2023-01-30
  */
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)

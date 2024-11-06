@@ -8,7 +8,6 @@ import com.mybatisflex.core.keygen.KeyGenerators;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -17,13 +16,10 @@ import java.io.Serializable;
  * @author lishangbu
  * @since 2019-02-17 23:53:08
  */
-@NoArgsConstructor
 @Data
 @Table(value = "ACCOUNT")
+@NoArgsConstructor
 public class Account implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 1L;
 
     /**
      * 账户ID
@@ -53,22 +49,22 @@ public class Account implements Serializable {
     private String mobile;
 
     /**
-     * 账号激活状态,0代表未激活,1代表已经激活
+     * 账号激活状态,false代表未激活,true代表已经激活
      */
     private Boolean enabled;
 
     /**
-     * 账号未过期状态0代表已经过期，1代表未过期
+     * 账号未过期状态false代表已经过期，true代表未过期
      */
     private Boolean accountNonExpired;
 
     /**
-     * 密码未过期状态,0代表密码已经过期,1代表密码未过期
+     * 密码未过期状态,false代表密码已经过期,true代表密码未过期
      */
     private Boolean credentialsNonExpired;
 
     /**
-     * 账户未锁定状态,0代表密码已经锁定,1代表账号未锁定
+     * 账户未锁定状态,false代表密码已经锁定,true代表账号未锁定
      */
     private Boolean accountNonLocked;
 

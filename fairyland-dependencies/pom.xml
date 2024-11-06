@@ -17,7 +17,6 @@
     <properties>
         <java.version>21</java.version>
         <io-game.version>21.19</io-game.version>
-        <jjwt.version>0.12.6</jjwt.version>
         <jprotobuf-precompile-plugin.version>2.2.12</jprotobuf-precompile-plugin.version>
         <jprotobuf.version>2.4.23</jprotobuf.version>
         <logback.version>1.5.12</logback.version>
@@ -36,7 +35,7 @@
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.baidu/jprotobuf -->
+            <!-- jprotobuf -->
             <dependency>
                 <groupId>com.baidu</groupId>
                 <artifactId>jprotobuf</artifactId>
@@ -72,25 +71,8 @@
                 <groupId>com.mybatis-flex</groupId>
                 <artifactId>mybatis-flex-dependencies</artifactId>
                 <version>${mybatis-flex.version}</version>
-                <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <!-- jjwt-api -->
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-api</artifactId>
-                <version>${jjwt.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-impl</artifactId>
-                <version>${jjwt.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-jackson</artifactId>
-                <version>${jjwt.version}</version>
-                <scope>runtime</scope>
+                <type>pom</type>
             </dependency>
             <dependency>
                 <groupId>org.mapstruct</groupId>

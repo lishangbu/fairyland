@@ -25,12 +25,12 @@ public class AccountService {
 
 
     /**
-     * 登录
+     * 验证账户
      *
      * @param username 登录用的用户名
      * @param password 登录用的密码
      */
-    public Account login(String username, String password) {
+    public Account getAndValidateAccount(String username, String password) {
         Account account = getAccountByUsername(username);
         Assert.notNull(account, "用户名或密码错误");
         Assert.isTrue(BCrypt.checkpw(password, account.getPassword()), "用户名或密码错误");
