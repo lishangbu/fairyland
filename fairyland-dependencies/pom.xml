@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>21</java.version>
-        <io-game.version>21.19</io-game.version>
+        <io-game.version>21.20</io-game.version>
         <jprotobuf-precompile-plugin.version>2.2.12</jprotobuf-precompile-plugin.version>
         <jprotobuf.version>2.4.23</jprotobuf.version>
         <logback.version>1.5.12</logback.version>
