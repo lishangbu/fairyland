@@ -3,6 +3,7 @@ package io.github.lishangbu.fairyland.account.action;
 import com.iohao.game.action.skeleton.annotation.ActionController;
 import com.iohao.game.action.skeleton.annotation.ActionMethod;
 import com.iohao.game.action.skeleton.core.flow.FlowContext;
+import com.iohao.game.bolt.broker.client.kit.ExternalCommunicationKit;
 import io.github.lishangbu.common.core.constant.route.ModuleCmdConstants;
 import io.github.lishangbu.fairyland.account.entity.Account;
 import io.github.lishangbu.fairyland.account.entity.Token;
@@ -52,17 +53,19 @@ public class TokenAction {
     public TokenInfo login(LoginRequestParam loginRequestParam, FlowContext flowContext) {
         Account account = accountService.getAndValidateAccount(loginRequestParam.getUsername(), loginRequestParam.getPassword());
         final Long userId = account.getId();
-        flowContext.setUserId(userId);
-        Token token = tokenStorage.getByUserId(userId);
-        if (token == null) {
-            token = new Token();
+        if (flowContext.getUserId() == 0L || !ExternalCommunicationKit.existUser(userId)) {
+            flowContext.setUserId(userId);
+            Token token = new Token();
+            token.setUserId(account.getId());
+            token.setUsername(account.getUsername());
+            token.setTokenValue(UUID.randomUUID().toString());
+            tokenStorage.save(token);
+            flowContext.updateAttachment(tokenMapstruct.toTokenAttachment(token));
+            return tokenMapstruct.toTokenInfo(token);
+        } else {
+            flowContext.setUserId(userId);
+            return tokenMapstruct.toTokenInfo(tokenStorage.getByUserId(userId));
         }
-        token.setUserId(account.getId());
-        token.setUsername(account.getUsername());
-        token.setTokenValue(UUID.randomUUID().toString());
-        tokenStorage.save(token);
-        flowContext.updateAttachment(tokenMapstruct.toTokenAttachment(token));
-        return tokenMapstruct.toTokenInfo(token);
     }
 
     /**
@@ -98,6 +101,7 @@ public class TokenAction {
     public void logout(FlowContext flowContext) {
         if (flowContext.getUserId() != 0L) {
             tokenStorage.removeByUserId(flowContext.getUserId());
+            ExternalCommunicationKit.forcedOffline(flowContext.getUserId());
         }
     }
 

@@ -12,7 +12,7 @@
 
 - [Fairyland Doc](https://lishangbu.github.io/fairyland-doc/)
 - [Spring](https://docs.spring.io/spring-boot/index.html)
-- [ioGame](https://game.iohao.com)
+- [ioGame](https://www.yuque.com/iohao/game)
 - [mybatis-flex](https://mybatis-flex.com)
 
 ## 维护者
